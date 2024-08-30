@@ -4,13 +4,7 @@
             "path": ".alpackages"
         },
         {
-            "path": "alopsboilerplate.AL"
-        },
-        {
-            "path": "alopsboilerplatedepApp.AL"
-        },
-        {
-            "path": "alopsboilerplateTest.AL"
+            "path": "Pei.AL"
         }
     ],
     "settings": {
@@ -35,8 +29,9 @@
                 "request": "launch",
                 "type": "al",
                 "environmentType": "Sandbox",
-                "tenant": "1ec8d540-36e6-4267-8aed-d5591039a2ba", // TODO Your Tenant ID
-                "environmentName": "Sandbox", // TODO Your Sandbox Name
+                "tenant": "bfab01e2-b001-4f64-9d77-f857fe02464e",
+                "environmentName": "SandboxStD290824_SS", 
+                "startupCompany": "GER verslanir ehf.", 
                 "startupObjectId": 22,
                 "startupObjectType": "Page",
                 "breakOnError": "All",
