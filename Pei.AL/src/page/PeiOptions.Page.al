@@ -1,4 +1,4 @@
-page 10048654 "Pei Options"
+page 92003 "Pei Options"
 {
     PageType = List;
     SourceTable = "Pei Option";

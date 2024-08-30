@@ -1,4 +1,4 @@
-table 10048654 "Pei Option"
+table 92003 "Pei Option"
 {
     Caption = 'Pei Option';
 

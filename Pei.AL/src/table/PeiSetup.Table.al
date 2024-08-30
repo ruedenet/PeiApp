@@ -1,4 +1,4 @@
-table 10048650 "Pei Setup"
+table 92000 "Pei Setup"
 {
 
     Caption = 'Pei Setup';

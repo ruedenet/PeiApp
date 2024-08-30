@@ -1,4 +1,4 @@
-page 10048655 "Pei Reminder Message"
+page 92005 "Pei Reminder Message"
 {
     ApplicationArea = All;
     Caption = 'Pei Reminder Message';

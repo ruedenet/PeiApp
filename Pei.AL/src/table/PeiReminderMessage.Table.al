@@ -1,4 +1,4 @@
-table 10048655 "Pei Reminder Message"
+table 92003 "Pei Reminder Message"
 {
     Caption = 'Pei Reminder Message';
     DataClassification = ToBeClassified;

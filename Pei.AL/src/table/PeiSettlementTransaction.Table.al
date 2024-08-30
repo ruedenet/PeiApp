@@ -1,4 +1,4 @@
-table 10048653 "Pei Settlement Transaction"
+table 92002 "Pei Settlement Transaction"
 {
     Caption = 'Pei Settlement Transaction';
     // version PEI103

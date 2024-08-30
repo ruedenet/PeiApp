@@ -1,4 +1,4 @@
-table 10048651 "Pei Order"
+table 92001 "Pei Order"
 {
     // version PEI103
 

@@ -1,4 +1,4 @@
-page 10048650 "Pei Setup"
+page 92000 "Pei Setup"
 {
     // version PEI100
     UsageCategory = Administration;
