@@ -1,0 +1,41 @@
+{
+  "id": "8a858685-5f37-43e8-8ced-fdfb0dc29db6",
+  "name": "Rue de Net Alops Boilerplate Dependand App",
+  "publisher": "Rue de Net",
+  "version": "1.0.0.0",
+  "brief": "Something Brief",
+  "description": "Nice app that depends on other app",
+  "privacyStatement": "http://www.ruedenet.is",
+  "EULA": "http://www.ruedenet.is",
+  "help": "http://www.ruedenet.is",
+  "url": "http://www.ruedenet.is",
+  "contextSensitiveHelpUrl": "http://www.ruedenet.is",
+  "logo": ".\\logo.png",
+  "dependencies": [
+    {
+      "id": "b2213245-1642-43e8-a7b8-275daa813a41",
+      "name": "Rue de Net Alops Boilerplate",
+      "publisher": "Rue de Net",
+      "version": "1.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "24.0.0.0",
+  "idRanges": [
+    {
+      "from": 99000,
+      "to": 99001
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "13.0",
+  "features": [
+    "NoImplicitWith",
+    "TranslationFile"
+  ]
+}

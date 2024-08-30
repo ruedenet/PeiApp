@@ -1,0 +1,133 @@
+trigger:
+
+  branches:
+   include:
+    #  - develop
+     - master
+
+pr:
+ branches:
+   include:
+    #  - develop
+     - alops-test
+
+pool:
+  name: Seacity
+
+variables:
+- name: 'alops-licenseid'
+  value: '$(RDN-AlopsLicense)'
+
+steps:
+- checkout: self
+  clean: true
+
+
+- task: ALOpsDockerCreate@1
+  displayName: 'ALOPS - Create Docker Image' # It will reuse the image if already exists, or build one if it doesn't.
+  inputs:
+    artifacttype: Sandbox
+    artifactcountry: 'is'
+    licensefile: '$(RDN-DEV-License)'
+
+- task: ALOpsDockerStart@1
+  displayName: 'ALOPS - Start Docker Container' # No need to provide any details - it will get the details from previous step
+
+- task: ALOpsDockerWait@1
+  displayName: 'ALOPS - Wait for Docker Container to start'
+  inputs:
+    search_string: 'Ready for connections!'
+
+- task: ALOpsAppPublish@1
+  displayName: 'ALOPS - Install AL TestTool' # install necessary dependent apps for testability
+  inputs:
+    usedocker: true
+    installaltesttool: true
+    skip_verification: true
+    install_al_app_names: |
+      Tests-TestLibraries
+      System Application Test
+      System Application Test Library
+      Any
+      Library Assert
+      Test Runner
+      Permissions Mock
+      Library Variable Storage
+
+
+
+- task: ALOpsAppCompiler@2
+  displayName: 'Compile boilerplate App'
+  inputs:
+    artifacttype: Sandbox
+    appversiontemplate: '24.4.19.*'
+    updatebuildnumber: True
+    appfilenametemplate: '%APP_NAME%_%APP_VERSION%.app'
+    # targetproject: 'alopsboilerplate.AL/app.json'  
+    alsourcepath: 'alopsboilerplate.AL/app.json' #$(System.DefaultWorkingDirectory) 
+    versionselect: Weekly
+    alcodeanalyzer: CodeCop,UICop
+    ruleset: "$(System.DefaultWorkingDirectory)/rdn-customers.ruleset.json"
+
+
+- task: ALOpsAppPublish@1
+  displayName: 'Publish Boilerplate App'
+  inputs:
+    usedocker: true
+    nav_artifact_app_filter: '*.app'
+    skip_verification: true
+
+
+
+
+- task: ALOpsAppCompiler@2
+  displayName: 'Compile test App'
+  inputs:
+    artifacttype: Sandbox
+    appversiontemplate: '24.4.19.*'
+    updatebuildnumber: True
+    appfilenametemplate: '%APP_NAME%_%APP_VERSION%.app'
+    # targetproject: 'alopsboilerplatedepApp.AL/app.json' 
+    alsourcepath: 'alopsboilerplateTest.AL/app.json' #$(System.DefaultWorkingDirectory) 
+    versionselect: Weekly
+    alcodeanalyzer: CodeCop,UICop
+    ruleset: "$(System.DefaultWorkingDirectory)/rdn-customers.ruleset.json"
+
+- task: ALOpsAppPublish@1
+  displayName: 'Publish Test App'
+  inputs:
+    usedocker: true
+    nav_artifact_app_filter: '*.app'
+    skip_verification: true
+
+
+
+#<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# Testing
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+- task: ALOpsAppTest@1
+  displayName: 'ALOps - Run TestSuite'
+  inputs:
+    usedocker: true
+    import_action: "Skip"
+    import_testtoolkit: false
+    show_available_tests: True
+    testpage: 130455
+    testsuite: 'DEFAULT'
+    failed_test_action: 'Error'
+  continueOnError: false  
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results **/TestResults.xml'
+  inputs:
+    testResultsFormat: XUnit
+    testResultsFiles: '**/TestResults.xml'
+    testRunTitle: 'BC Test Results: $(Build.BuildId)'
+
+#<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+- task: ALOpsDockerRemove@1
+  displayName: 'Remove Docker Container'
+  enabled: true
+  condition: always()

@@ -1,0 +1,49 @@
+{
+    "folders": [
+        {
+            "path": ".alpackages"
+        },
+        {
+            "path": "alopsboilerplate.AL"
+        },
+        {
+            "path": "alopsboilerplatedepApp.AL"
+        },
+        {
+            "path": "alopsboilerplateTest.AL"
+        }
+    ],
+    "settings": {
+        "al.enableCodeAnalysis": true,
+        "al.codeAnalyzers": [
+            "${CodeCop}",
+            "${UICop}",
+            "${PerTenantExtensionCop}"
+        ],
+        "CRS.OnSaveAlFileAction": "Reorganize",
+        "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+        "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+        "CRS.FileNamePatternPageCustomizations": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+        "al.packageCachePath": "../.alpackages",
+        "al.ruleSetPath": "../rdn-customers.ruleset.json",
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Microsoft cloud sandbox",
+                "request": "launch",
+                "type": "al",
+                "environmentType": "Sandbox",
+                "tenant": "1ec8d540-36e6-4267-8aed-d5591039a2ba", // TODO Your Tenant ID
+                "environmentName": "Sandbox", // TODO Your Sandbox Name
+                "startupObjectId": 22,
+                "startupObjectType": "Page",
+                "breakOnError": "All",
+                "launchBrowser": true,
+                "enableLongRunningSqlStatements": true,
+                "enableSqlInformationDebugger": true
+            }
+        ]
+    }
+}

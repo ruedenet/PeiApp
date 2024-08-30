@@ -1,0 +1,46 @@
+{
+  "id": "e4565fba-dd89-45d6-a1fb-89412f33580a",
+  "name": "Rue de Net Alops Boilerplate Unit Test",
+  "publisher": "Rue de Net",
+  "version": "1.0.0.0",
+  "brief": "Something Brief",
+  "description": "Nice app",
+  "privacyStatement": "http://www.ruedenet.is",
+  "EULA": "http://www.ruedenet.is",
+  "help": "http://www.ruedenet.is",
+  "url": "http://www.ruedenet.is",
+  "contextSensitiveHelpUrl": "http://www.ruedenet.is",
+  "logo": ".\\logo.png",
+  "dependencies": [
+    {
+      "id": "b2213245-1642-43e8-a7b8-275daa813a41",
+      "name": "Rue de Net Alops Boilerplate",
+      "publisher": "Rue de Net",
+      "version": "1.0.0.0"
+    },
+    {
+      "id":  "dd0be2ea-f733-4d65-bb34-a28f4624fb14",
+      "name":  "Library Assert",
+      "version":  "24.0.0.0",
+      "publisher":  "Microsoft"
+  }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "24.0.0.0",
+  "idRanges": [
+    {
+      "from": 99500,
+      "to": 99501
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "13.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}

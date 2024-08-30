@@ -1,0 +1,58 @@
+{
+    "name": "Rue de Net Ruleset for Customers",
+    "description": "These rules must be respected by all the AL code written within the company when writing extensions for customers",
+    "rules": [
+
+        {
+            "id": "AA0072",
+            "action": "None",
+            "justification": "This goes against RdN variable naming standards"
+        },
+        {
+            "id": "AA0215",
+            "action": "None",
+            "justification": "Filenames should be without prefix"
+        },
+        {
+            "id": "AA0218",
+            "action": "None",
+            "justification": "Tooltips are not needed"
+        },
+        
+        {
+            "id": "AS0016",
+            "action": "None",
+            "justification": "DataClassification not needed"
+        },
+        {
+            "id": "AS0051",
+            "action": "None",
+            "justification": "Manifest properties are not needed"
+        },
+        {
+            "id": "AS0052",
+            "action": "None",
+            "justification": "Url property is not needed"
+        },
+        {
+            "id": "AS0054",
+            "action": "None",
+            "justification": "We are not using AppSourceCop.json file"
+        },
+        {
+            "id": "AS0055",
+            "action": "None",
+            "justification": "We are not using AppSourceCop.json file"
+        },
+        {
+            "id": "AS0084",
+            "action": "None",
+            "justification": "Id Ranges should not be limited to AppSource range"
+        },
+        {
+            "id": "AS0092",
+            "action": "None",
+            "justification": "Azure Application Insights resource not needed"
+        }
+    ]
+}
